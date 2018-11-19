@@ -1,4 +1,6 @@
 import express from "express";
+import bodyParser from "body-parser"
+
 import { MainController } from "./controller";
 
 class App {
@@ -10,7 +12,8 @@ class App {
   }
 
   private config(): void {
-    this.app.get('/', new MainController().root)
+    this.app.use(bodyParser.json())
+    this.app.post('/', new MainController().root)
   }
 }
 

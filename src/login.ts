@@ -8,8 +8,6 @@ const URL_BILLING_ACTIVITY = 'https://www.netflix.com/BillingActivity';
 const URL_MY_LIST = 'https://www.netflix.com/browse/my-list';
 const URL_ACCOUNT_ACCESS = 'https://www.netflix.com/AccountAccess';
 const URL_VIEWING_ACTIVITY = 'https://www.netflix.com/viewingactivity';
-const USERNAME = '';
-const PASSWORD = '';
 
 const USERNAME_SELECTOR  = '#email';
 const PASSWORD_SELECTOR  = '#password';
@@ -28,14 +26,14 @@ export class Scraper {
     this.browser.close()
   }
 
-  public async login() {
+  public async login(username : string, password : string) {
     await this.page.goto(URL_LOGIN)
 
     await this.page.click(USERNAME_SELECTOR)
-    await this.page.keyboard.type(USERNAME)
+    await this.page.keyboard.type(username)
 
     await this.page.click(PASSWORD_SELECTOR)
-    await this.page.keyboard.type(PASSWORD)
+    await this.page.keyboard.type(password)
 
     await this.page.click(BUTTON_SELECTOR)
 
